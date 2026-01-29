@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background: #f4f6f9;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,.08);
+        }
+    </style>
+</head>
+<body>
+
+<h2 class="mb-4">📊 Stok Yönetim Dashboard</h2>
+
+<!-- STAT CARDS -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <span>Toplam Ürün</span>
+            <h3>{{ total_products }}</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <span>Toplam Stok</span>
+            <h3>{{ total_stock }}</h3>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <span>Stok Hareketleri</span>
+            <h3>{{ total_movements }}</h3>
+        </div>
+    </div>
+</div>
+
+<!-- CHARTS -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h5>📉 Stok Durumu</h5>
+            <canvas id="statusPie"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h5>📦 Mevcut / Minimum Stok</h5>
+            <canvas id="stockPie"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- KRİTİK ÜRÜNLER TABLOSU -->
+<h4 class="mt-4">⚠️ Kritik Stoktaki Ürünler</h4>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+        <thead class="table-warning text-center">
+            <tr>
+                <th>Ürün</th>
+                <th>Kategori</th>
+                <th>Mevcut Stok</th>
+                <th>Min. Stok</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if critical_products %}
+            {% for product in critical_products %}
+            <tr>
+                <td><strong>{{ product.name }}</strong></td>
+                <td>{{ product.category.name }}</td>
+                <td class="text-danger fw-bold text-center">{{ product.stock }}</td>
+                <td class="text-center">{{ product.min_stock }}</td>
+                <td class="text-center">
+                    <span class="badge bg-danger">KRİTİK</span>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center text-success fw-bold">
+                    🎉 Kritik stokta ürün yok
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<!-- CHART SCRIPTS -->
+<script>
+new Chart(document.getElementById("statusPie"), {
+    type: "pie",
+    data: {
+        labels: ["Kritik", "Normal"],
+        datasets: [{
+            data: [{{ critical_count }}, {{ normal_count }}],
+            backgroundColor: ["#dc3545", "#28a745"]
+        }]
+    }
+});
+
+new Chart(document.getElementById("stockPie"), {
+    type: "pie",
+    data: {
+        labels: ["Mevcut Stok", "Minimum Stok"],
+        datasets: [{
+            data: [{{ total_product_stock }}, {{ total_min_stock }}],
+            backgroundColor: ["#3498db", "#f1c40f"]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
