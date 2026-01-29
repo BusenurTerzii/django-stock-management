@@ -4,9 +4,10 @@ from django.http import HttpResponseForbidden
 from django.db.models import Sum, F
 
 from products.models import Product, StockMovement
+from django.http import HttpResponse
 
-
-@login_required
+def home(request):
+    return HttpResponse("Django Stock Management System is Live")
 def dashboard_view(request):
     user = request.user
 
