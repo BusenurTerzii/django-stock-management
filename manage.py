@@ -16,5 +16,5 @@ def main():
 
 
 if __name__ == '__main__':
-    import crete_superuser
+    import create_superuser
     main()
