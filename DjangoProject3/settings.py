@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-n6f8o2t+-kb#hpp4g-!v1851-+0h9fl5t8)cp^-m%o+=d*i$f8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'django-stock-management.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]
+INSTALLED_APPS = [
+    'django.contrib.admin',
+]
 
 
 # Application definition
