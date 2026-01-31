@@ -103,7 +103,7 @@ Bu proje *eğitim ve portföy amacıyla* geliştirilmiştir. Django ile backend 
 
 *Busenur Terzi*  
 🔗 GitHub: https://github.com/BusenurTerzii  
-🔗 LinkedIn: (LinkedIn linkini buraya ekleyebilirsin)
+🔗 LinkedIn: www.linkedin.com/in/busenur-terzi-17b3b3348
 
 ---
 
