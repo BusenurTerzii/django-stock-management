@@ -1,37 +1,29 @@
-# 📦 Django Stock Management System
+# 📦 Stok Yönetim Sistemi
 
-A web-based stock and inventory management system built with Django.
+Django ile geliştirilmiş, kategori bazlı ürün ve stok takibi yapılabilen web tabanlı stok yönetim sistemi.
 
-## 🚀 Features
-- Product & Category management
-- Stock in / stock out tracking
-- Critical stock detection
-- Admin dashboard with statistics
-- Charts with Chart.js
-- Role-based access control
+## 🚀 Özellikler
+- Kategori ve ürün yönetimi
+- Stok giriş / çıkış işlemleri
+- Minimum stok takibi (kritik stok uyarısı)
+- Dashboard ve grafikler
+- Django Admin paneli
+- Kullanıcı ve yetkilendirme sistemi
 
-## 🛠️ Technologies
-- Python 3
+## 🛠️ Kullanılan Teknolojiler
+- Python
 - Django
 - SQLite
 - HTML / CSS
-- Bootstrap
 - Chart.js
+- Render
 
 ## 📊 Dashboard
-- Total products
-- Total stock
-- Stock movements
-- Critical vs normal stock visualization
+Toplam ürün, stok durumu ve kritik stoklar grafiklerle gösterilmektedir.
 
-## ⚙️ Installation
+## 🌐 Canlı Demo
+https://django-stock-management.onrender.com
 
-```bash
-git clone https://github.com/BusenurTerzi1/django-stock-management.git
-cd django-stock-management
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
+---
+
+Bu proje eğitim ve portföy amaçlı geliştirilmiştir.
