@@ -140,3 +140,8 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = 'users.User'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+import os
+
+AUTO_CREATE_SUPERUSER = os.environ.get("AUTO_CREATE_SUPERUSER") == "1"
+ALLOWED_HOSTS = ["*"]
+
